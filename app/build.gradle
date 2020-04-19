@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "dmitriy.deomin.findcolor"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "0.1"
+    }
+
+    //эта дич нужна чтобы получить версию приложения стрингом в Abaut
+    //--------------------------
+    applicationVariants.all { variant ->
+        variant.resValue "string", "versionName", variant.versionName
+    }
+    //---------------------------
+
+    //настройка билдов , если minifyEnabled включить почистит от мусора готовый апк, есть риск работать нечего не будет
+    //multiDexEnabled - если не включить ошибки выскакивают
+    buildTypes {
+        debug {
+            multiDexEnabled true
+            minifyEnabled true
+        }
+        release {
+            multiDexEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://maven.google.com" }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
+}
