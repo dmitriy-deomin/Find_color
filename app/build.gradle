@@ -5,7 +5,6 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-
     defaultConfig {
         applicationId "dmitriy.deomin.findcolor"
         minSdkVersion 19
@@ -14,15 +13,6 @@ android {
         versionName "0.1"
     }
 
-    //эта дич нужна чтобы получить версию приложения стрингом в Abaut
-    //--------------------------
-    applicationVariants.all { variant ->
-        variant.resValue "string", "versionName", variant.versionName
-    }
-    //---------------------------
-
-    //настройка билдов , если minifyEnabled включить почистит от мусора готовый апк, есть риск работать нечего не будет
-    //multiDexEnabled - если не включить ошибки выскакивают
     buildTypes {
         debug {
             multiDexEnabled true
