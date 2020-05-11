@@ -1,4 +1,4 @@
-package dmitriy.deomin.findcolor
+package deomin.dmitriy.find_color
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,30 +8,65 @@ import android.view.View
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import deomin.dmitriy.find_color.`fun`.rnd_color
+import deomin.dmitriy.find_color.`fun`.vibrator
 
 class Btn : Button {
     constructor(context: Context) : super(context) { init() }
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) { init() }
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) { init() }
 
-    override fun setOnClickListener(l: View.OnClickListener?) {
-        val wrapper = View.OnClickListener {
-            startAnimation(
-                AnimationUtils.loadAnimation(
-                    this.context,
-                    dmitriy.deomin.findcolor.R.anim.alfa
-                )
-            )
-            l?.onClick(it)
-        }
-        super.setOnClickListener(wrapper)
-    }
+    var background_color = rnd_color()
+
+//    override fun setOnClickListener(l: View.OnClickListener?) {
+//        val wrapper = View.OnClickListener {
+//            clik_anim()
+//            vibrator(this.context)
+//            l?.onClick(it)
+//        }
+//        super.setOnClickListener(wrapper)
+//    }
 
     fun init() {
-
-//        this.typeface = Main.face
-//        this.gravity = Gravity.CENTER
+        this.textSize = 16F
+        this.setBackgroundColor(background_color)
     }
+
+    fun setBackcolor(color:Int){
+        background_color = color
+        init()
+    }
+
+    fun clik_anim(){
+        vibrator(context,10L)
+        startAnimation(
+            AnimationUtils.loadAnimation(
+                this.context,
+                //dmitriy.deomin.findcolor.R.anim.alfa
+                deomin.dmitriy.find_color.R.anim.alfa
+            )
+        )
+    }
+
+    fun start_anim_error(){
+        startAnimation(
+            AnimationUtils.loadAnimation(
+                this.context,
+                deomin.dmitriy.find_color.R.anim.shake_error
+            )
+        )
+    }
+
+    fun start_anim_help(){
+        startAnimation(
+            AnimationUtils.loadAnimation(
+                this.context,
+                deomin.dmitriy.find_color.R.anim.shake_help
+            )
+        )
+    }
+
+
 }
 
 

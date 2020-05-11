@@ -1,4 +1,4 @@
-package dmitriy.deomin.findcolor
+package deomin.dmitriy.find_color
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package dmitriy.deomin.findcolor.`fun`
+package deomin.dmitriy.find_color.`fun`
 
 import android.content.Context
 import android.content.res.Configuration

@@ -1,4 +1,4 @@
-package dmitriy.deomin.findcolor.`fun`
+package deomin.dmitriy.find_color.`fun`
 
 import android.graphics.Color
 

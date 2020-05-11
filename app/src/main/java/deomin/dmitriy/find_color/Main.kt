@@ -1,26 +1,36 @@
-package dmitriy.deomin.findcolor
+package deomin.dmitriy.find_color
 
 import android.app.Activity
 import android.content.Context
-import android.os.Build
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TableRow
-import dmitriy.deomin.findcolor.`fun`.getNavigationBarHeight
-import dmitriy.deomin.findcolor.`fun`.rnd_color
+import deomin.dmitriy.find_color.`fun`.*
+import deomin.dmitriy.find_color.game.main_game
 import kotlinx.android.synthetic.main.main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class Main : Activity() {
 
+    companion object {
+        lateinit var context: Context
+        lateinit var mas_button: ArrayList<Btn>
+        lateinit var mSettings: SharedPreferences
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
+
+        context = this
+        mSettings = getSharedPreferences("mysettings", Context.MODE_PRIVATE)
 
         //настройка экрана
         //------------------------------------------------------------------------------
@@ -40,13 +50,6 @@ class Main : Activity() {
         }
         //-----------------------------------------------------------------------------
 
-
-        //размеры сетки
-        val HEIGH = 7
-        val WIDCH = 3
-        //количество ячеек с цветом
-        val SIZE_POLE = HEIGH * WIDCH
-
         // узнаем размеры экрана из класса Display
         val display = windowManager.defaultDisplay
         val metricsB = DisplayMetrics()
@@ -56,74 +59,37 @@ class Main : Activity() {
         val h_nav = getNavigationBarHeight(this, display.rotation)
 
         //расчитам размеры кнопок под экран
-        val w_button = metricsB.widthPixels / WIDCH
-        val h_button = (metricsB.heightPixels + h_nav) / HEIGH
+        val size_button =
+            Pair((metricsB.heightPixels + h_nav) / HEIGH, metricsB.widthPixels / WIDCH)
+        //создадим массив кнопок и повесим на них обработку, кнопки видны всем
+        mas_button = create_mass_button(this, SIZE_TABLE, size_button)
 
-
-        //создадим масив цветов
-        val mas_color = IntArray(SIZE_POLE + 1)
-        for (i in 0 until SIZE_POLE + 1) {
-            mas_color[i] = rnd_color()
-        }
-
-        var number = 0
-
+        //заполняем таблицу кнопками
+        //------------------------------------------------------
+        var index = 0
         for (h in 0 until HEIGH) {
-
             val stroka = TableRow(this)
-
             for (w in 0 until WIDCH) {
-                val button = Btn(this)
-                button.id = number
-                button.setBackgroundColor(mas_color[number])
-                button.setOnClickListener(View.OnClickListener { clik(button.id) })
-                button.height = h_button
-                button.width = w_button
-                stroka.addView(button, w)
-
-                button.text = number.toString()
-
-                number ++
+                stroka.addView(mas_button[index], w)
+                index++
             }
             fon.addView(stroka, h)
         }
+        //--------------------------------------------------------
 
-    }
+        //установим цвета первый раз
+        setColor_mass_button()
 
-    fun clik(i: Int) {
-        Log.e("TTT", i.toString())
+        //загрузим количество угаданых цветов
+        size_find_clik = save_read_int("size_find_clik")
 
-        val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        val canVibrate: Boolean = vibrator.hasVibrator()
-        val milliseconds = 10L
-
-        if (canVibrate) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // API 26
-                vibrator.vibrate(
-                    VibrationEffect.createOneShot(
-                        milliseconds,
-                        VibrationEffect.DEFAULT_AMPLITUDE
-                    )
-                )
-            } else {
-                // This method was deprecated in API level 26
-                vibrator.vibrate(milliseconds)
+        //цикл игры
+        GlobalScope.launch  {
+            while (true) {
+                delay(500)
+                main_game()
             }
         }
-
-        when(i){
-
-            1-> {
-               val menu = Window(this,R.layout.menu)
-            }
-
-        }
-
-
-
-
-
     }
 }
 

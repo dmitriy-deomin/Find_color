@@ -1,4 +1,4 @@
-package dmitriy.deomin.findcolor
+package deomin.dmitriy.find_color
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
