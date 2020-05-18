@@ -11,7 +11,6 @@ import android.widget.TableRow
 import deomin.dmitriy.find_color.`fun`.*
 import deomin.dmitriy.find_color.game.main_game
 import kotlinx.android.synthetic.main.main.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -59,23 +58,10 @@ class Main : Activity() {
         val h_nav = getNavigationBarHeight(this, display.rotation)
 
         //расчитам размеры кнопок под экран
-        val size_button =
-            Pair((metricsB.heightPixels + h_nav) / HEIGH, metricsB.widthPixels / WIDCH)
-        //создадим массив кнопок и повесим на них обработку, кнопки видны всем
-        mas_button = create_mass_button(this, SIZE_TABLE, size_button)
+        get_size_button(context,metricsB,h_nav)
 
         //заполняем таблицу кнопками
-        //------------------------------------------------------
-        var index = 0
-        for (h in 0 until HEIGH) {
-            val stroka = TableRow(this)
-            for (w in 0 until WIDCH) {
-                stroka.addView(mas_button[index], w)
-                index++
-            }
-            fon.addView(stroka, h)
-        }
-        //--------------------------------------------------------
+        load_Table_Row(context,fon)
 
         //установим цвета первый раз
         setColor_mass_button()
@@ -83,11 +69,13 @@ class Main : Activity() {
         //загрузим количество угаданых цветов
         size_find_clik = save_read_int("size_find_clik")
 
-        //цикл игры
+        //цикл игры delay(500) -  обновление пол секунды
         GlobalScope.launch  {
             while (true) {
-                delay(500)
-                main_game()
+                if(!PAUSE) {
+                    delay(500)
+                    main_game()
+                }
             }
         }
     }

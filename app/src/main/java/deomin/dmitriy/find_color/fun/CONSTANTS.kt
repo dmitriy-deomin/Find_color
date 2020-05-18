@@ -2,13 +2,16 @@ package deomin.dmitriy.find_color.`fun`
 
 //размеры сетки
 // 6x15 - max , 3x7 - min
-val HEIGH = 7
-val WIDCH = 3
+var HEIGH = 7
+var WIDCH = 3
 //всего кнопок
 val SIZE_TABLE = WIDCH * HEIGH
 
 //Кнопка которую надо найти
 var find_button =0
+
+//Пауза
+var PAUSE = false
 
 //время простоя игрока: 1 = 1/2 секунды
 const val TIME_CLIK = 8

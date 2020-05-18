@@ -6,31 +6,39 @@ import android.view.View
 import deomin.dmitriy.find_color.Btn
 import deomin.dmitriy.find_color.R
 import deomin.dmitriy.find_color.Window
+import deomin.dmitriy.find_color.`fun`.PAUSE
 
-fun main_menu(context: Context){
-        val menu = Window(context, R.layout.menu)
+fun main_menu(context: Context) {
 
-        val akkaunt= menu.view().findViewById<Btn>(R.id.button_akkaunt)
-        akkaunt.setOnClickListener(View.OnClickListener {
-            akkaunt.clik_anim()
-                menu.close()
-                Log.e(
-                    "TTT", "akkaunt"
-                )
-            })
+    //приостанавливаем цикл игры
+    PAUSE = true
 
-        menu.view().findViewById<Btn>(R.id.button_settings)
-            .setOnClickListener(View.OnClickListener {
-                menu.close()
-                Log.e(
-                    "TTT",
-                    "settings"
-                )
-            })
+    val menu = Window(context, R.layout.menu)
 
-        menu.view().findViewById<Btn>(R.id.button_abaut)
-            .setOnClickListener(View.OnClickListener {
-                menu.close()
-                Log.e("TTT", "abaut")
-            })
+    val akkaunt = menu.view().findViewById<Btn>(R.id.button_akkaunt)
+    akkaunt.setOnClickListener(View.OnClickListener {
+        akkaunt.clik_anim()
+        menu.close()
+        PAUSE = false
+        Log.e(
+            "TTT", "akkaunt"
+        )
+    })
+
+    menu.view().findViewById<Btn>(R.id.button_settings)
+        .setOnClickListener(View.OnClickListener {
+            menu.close()
+            PAUSE = false
+            Log.e(
+                "TTT",
+                "settings"
+            )
+        })
+
+    menu.view().findViewById<Btn>(R.id.button_abaut)
+        .setOnClickListener(View.OnClickListener {
+            menu.close()
+            PAUSE = false
+            Log.e("TTT", "abaut")
+        })
 }
