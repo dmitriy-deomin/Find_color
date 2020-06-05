@@ -5,13 +5,13 @@ import deomin.dmitriy.find_color.`fun`.PAUSE
 import deomin.dmitriy.find_color.`fun`.save_value_int
 import deomin.dmitriy.find_color.`fun`.size_find_clik
 
-fun game_menu(){
+fun game_lost(){
     //Остановим игру
     PAUSE = true
 
     //Покажем окошко с выбором что делать
     //-Начать новую игру
-    val game_menu = DialogWindow(Main.context, R.layout.game_menu,true)
+    val game_menu = DialogWindow(Main.context, R.layout.game_lost,true)
     //Если окно закроется каклибо по другому
     game_menu.onClose {  PAUSE = false }
 
