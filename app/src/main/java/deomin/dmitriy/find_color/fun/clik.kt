@@ -1,15 +1,15 @@
 package deomin.dmitriy.find_color.`fun`
 
-import android.content.Context
 import deomin.dmitriy.find_color.Btn
+import deomin.dmitriy.find_color.Main.Companion.context
 import deomin.dmitriy.find_color.Main.Companion.mas_button
 import deomin.dmitriy.find_color.menu.main_menu
 
-fun clik(context: Context, btn: Btn) {
+fun clik(btn: Btn) {
 
-    if(btn.id==1)
+    if(btn.id==1) {
         main_menu(context)
-    else{
+    } else{
         if(mas_button[1].background_color==btn.background_color){
             //правельно
             //-------------------------------------------------
@@ -27,6 +27,12 @@ fun clik(context: Context, btn: Btn) {
             //неправельно
             vibrator(context,100L)
             btn.start_anim_error()
+            //уменьшим счёт
+            if(size_find_clik>=0){
+                size_find_clik -= ERROR_SMOLL
+                save_value_int("size_find_clik", size_find_clik)
+            }
+
         }
     }
 }

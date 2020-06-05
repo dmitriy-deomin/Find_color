@@ -4,6 +4,9 @@ import deomin.dmitriy.find_color.Main.Companion.mas_button
 
 fun setColor_mass_button(){
 
+    //всего кнопок
+    val SIZE_TABLE = WIDCH * HEIGH
+
     //устанавливаем у всех кнопок рандомный цвет
     for(btn in mas_button){
         btn.setBackcolor(rnd_color())

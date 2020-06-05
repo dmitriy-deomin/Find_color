@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fon_game_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <deomin.dmitriy.find_color.Text
+        android:id="@+id/text_new_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="You lost"
+        android:textSize="20dp" />
+
+    <deomin.dmitriy.find_color.Btn
+        android:id="@+id/button_start_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start new game" />
+</LinearLayout>
