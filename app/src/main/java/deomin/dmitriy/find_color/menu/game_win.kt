@@ -1,7 +1,9 @@
 package deomin.dmitriy.find_color.menu
 
 import deomin.dmitriy.find_color.*
-import deomin.dmitriy.find_color.`fun`.PAUSE
+import deomin.dmitriy.find_color.Main.Companion.PAUSE
+import deomin.dmitriy.find_color.Main.Companion.size_find_clik
+import deomin.dmitriy.find_color.`fun`.save_value_int
 
 fun game_win(){
     //Остановим игру
@@ -15,6 +17,9 @@ fun game_win(){
 
     val btn_start = game_win.view().findViewById<Btn>(R.id.button_win)
     btn_start.setOnClickListener {
+        //сбросим очки счета ,для запуска новой игры
+        size_find_clik=0
+        save_value_int("size_find_clik", size_find_clik)
         game_win.close()
         PAUSE = false
     }

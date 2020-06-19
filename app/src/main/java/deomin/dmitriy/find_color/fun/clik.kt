@@ -1,8 +1,11 @@
 package deomin.dmitriy.find_color.`fun`
 
 import deomin.dmitriy.find_color.Btn
+import deomin.dmitriy.find_color.Main.Companion.ERROR_SMOLL
 import deomin.dmitriy.find_color.Main.Companion.context
 import deomin.dmitriy.find_color.Main.Companion.mas_button
+import deomin.dmitriy.find_color.Main.Companion.size_find_clik
+import deomin.dmitriy.find_color.Main.Companion.time_tik
 import deomin.dmitriy.find_color.menu.main_menu
 
 fun clik(btn: Btn) {

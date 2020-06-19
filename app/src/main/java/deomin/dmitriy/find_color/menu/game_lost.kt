@@ -1,9 +1,9 @@
 package deomin.dmitriy.find_color.menu
 
 import deomin.dmitriy.find_color.*
-import deomin.dmitriy.find_color.`fun`.PAUSE
+import deomin.dmitriy.find_color.Main.Companion.PAUSE
+import deomin.dmitriy.find_color.Main.Companion.size_find_clik
 import deomin.dmitriy.find_color.`fun`.save_value_int
-import deomin.dmitriy.find_color.`fun`.size_find_clik
 
 fun game_lost(){
     //Остановим игру

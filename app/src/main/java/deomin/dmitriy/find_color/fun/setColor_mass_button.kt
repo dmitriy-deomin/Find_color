@@ -1,5 +1,8 @@
 package deomin.dmitriy.find_color.`fun`
 
+import deomin.dmitriy.find_color.Main.Companion.HEIGH
+import deomin.dmitriy.find_color.Main.Companion.WIDCH
+import deomin.dmitriy.find_color.Main.Companion.find_button
 import deomin.dmitriy.find_color.Main.Companion.mas_button
 
 fun setColor_mass_button(){

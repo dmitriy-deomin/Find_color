@@ -3,6 +3,8 @@ package deomin.dmitriy.find_color.`fun`
 import android.view.View
 import deomin.dmitriy.find_color.Btn
 import deomin.dmitriy.find_color.Main
+import deomin.dmitriy.find_color.Main.Companion.HEIGH
+import deomin.dmitriy.find_color.Main.Companion.WIDCH
 import deomin.dmitriy.find_color.Main.Companion.heightPixels_display
 import deomin.dmitriy.find_color.Main.Companion.navigationBarHeight
 import deomin.dmitriy.find_color.Main.Companion.widthPixels_display

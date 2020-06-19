@@ -1,7 +1,7 @@
 package deomin.dmitriy.find_color.game
 
-import deomin.dmitriy.find_color.`fun`.SIZE_FIND_COLOR
-import deomin.dmitriy.find_color.`fun`.size_find_clik
+import deomin.dmitriy.find_color.Main.Companion.SIZE_FIND_COLOR
+import deomin.dmitriy.find_color.Main.Companion.size_find_clik
 import deomin.dmitriy.find_color.game.levels.level_1
 import deomin.dmitriy.find_color.game.levels.level_2
 import deomin.dmitriy.find_color.game.levels.level_3

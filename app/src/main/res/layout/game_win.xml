@@ -17,5 +17,5 @@
         android:id="@+id/button_win"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ok" />
+        android:text="start new game" />
 </LinearLayout>

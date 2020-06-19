@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import deomin.dmitriy.find_color.*
-import deomin.dmitriy.find_color.`fun`.PAUSE
+import deomin.dmitriy.find_color.Main.Companion.PAUSE
 
 fun main_menu(context: Context) {
 

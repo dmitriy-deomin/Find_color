@@ -1,6 +1,15 @@
 package deomin.dmitriy.find_color.game.levels
 
+import deomin.dmitriy.find_color.Main.Companion.ERROR_SMOLL
+import deomin.dmitriy.find_color.Main.Companion.HEIGH
+import deomin.dmitriy.find_color.Main.Companion.SIZE_FIND_COLOR
+import deomin.dmitriy.find_color.Main.Companion.TIME_CLIK
+import deomin.dmitriy.find_color.Main.Companion.WIDCH
+import deomin.dmitriy.find_color.Main.Companion.find_button
 import deomin.dmitriy.find_color.Main.Companion.mas_button
+import deomin.dmitriy.find_color.Main.Companion.setup_lavel
+import deomin.dmitriy.find_color.Main.Companion.size_find_clik
+import deomin.dmitriy.find_color.Main.Companion.time_tik
 import deomin.dmitriy.find_color.`fun`.*
 
 fun level_3() {
