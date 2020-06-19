@@ -12,6 +12,7 @@ import deomin.dmitriy.find_color.`fun`.*
 import deomin.dmitriy.find_color.game.main_game
 import kotlinx.android.synthetic.main.main.*
 import kotlinx.coroutines.*
+import android.media.MediaPlayer
 
 
 class Main : Activity() {
@@ -21,6 +22,8 @@ class Main : Activity() {
         lateinit var mas_button: ArrayList<Btn>
         lateinit var mSettings: SharedPreferences
         lateinit var tableLayout: TableLayout
+        lateinit var mPlayer: MediaPlayer
+
 
         //размеры экрана(не меняется , устанавливается один раз при запуске)
         var navigationBarHeight = 0
@@ -33,10 +36,10 @@ class Main : Activity() {
         var WIDCH = 3
 
         //время обновления цикла игры
-        const val TIME_LOOP= 1000
+        const val TIME_LOOP = 1000
 
         //Кнопка которую надо найти
-        var find_button =0
+        var find_button = 0
 
         //Пауза
         var PAUSE = false
@@ -47,8 +50,9 @@ class Main : Activity() {
 
         //предел количества правельных угаданных для перехода к следующему уровню
         const val SIZE_FIND_COLOR = 10
+
         //текущий счет (загружается при запуске и постоянно сохраняется)
-        var size_find_clik=0
+        var size_find_clik = 0
 
         //
         var ERROR_SMOLL = 1
@@ -94,6 +98,10 @@ class Main : Activity() {
         heightPixels_display = metricsB.heightPixels
 
 
+        mPlayer = MediaPlayer.create(context, R.raw.start)
+        mPlayer.start()
+
+
         //делаем глобальным корневой лояут
         tableLayout = fon
 
@@ -112,6 +120,15 @@ class Main : Activity() {
                         main_game()
                 }
             }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //Остановим игру
+        PAUSE = true
+        if (mPlayer.isPlaying) {
+            mPlayer.stop()
         }
     }
 }

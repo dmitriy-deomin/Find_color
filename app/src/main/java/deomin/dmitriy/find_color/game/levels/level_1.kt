@@ -1,5 +1,7 @@
 package deomin.dmitriy.find_color.game.levels
 
+import android.media.MediaPlayer
+import deomin.dmitriy.find_color.Main
 import deomin.dmitriy.find_color.Main.Companion.ERROR_SMOLL
 import deomin.dmitriy.find_color.Main.Companion.HEIGH
 import deomin.dmitriy.find_color.Main.Companion.SIZE_FIND_COLOR
@@ -10,6 +12,7 @@ import deomin.dmitriy.find_color.Main.Companion.mas_button
 import deomin.dmitriy.find_color.Main.Companion.setup_lavel
 import deomin.dmitriy.find_color.Main.Companion.size_find_clik
 import deomin.dmitriy.find_color.Main.Companion.time_tik
+import deomin.dmitriy.find_color.R
 import deomin.dmitriy.find_color.`fun`.*
 
 fun level_1() {
@@ -41,6 +44,14 @@ fun level_1() {
         load_Table_Row()
 
         setup_lavel = lavel
+
+        //музыка
+        if (Main.mPlayer.isPlaying) {
+            Main.mPlayer.stop()
+        }
+        Main.mPlayer = MediaPlayer.create(Main.context, R.raw.lavel_1)
+        Main.mPlayer.start()
+        Main.mPlayer.isLooping = true
     }
 
 
